@@ -15,3 +15,18 @@ También se podría utilizar la información histórica para intentar predecir l
 Conjunto de datos utilizado
 
 El conjunto de datos utilizado en este proyecto fue obtenido del portal de Datos Abiertos Colombia.
+
+1. API externa
+
+Para complementar el dataset de accidentes de tránsito se utilizará
+la API de clima histórico de Open-Meteo.
+
+Esta API proporciona información meteorológica histórica como
+temperatura, precipitación, humedad y velocidad del viento.
+
+Los datos obtenidos mediante la API se podrán relacionar con el dataset
+de accidentalidad utilizando la fecha y hora del accidente.
+
+El propósito de esta integración es analizar si las condiciones
+climáticas pueden estar relacionadas con la frecuencia o gravedad
+de los accidentes de tránsito en Barranquilla.
