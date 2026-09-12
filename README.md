@@ -29,7 +29,7 @@ También se podría utilizar la información histórica para intentar predecir l
 
 ## Fuentes de datos
 
-Para el desarrollo del proyecto se definieron dos fuentes de datos relacionadas con la accidentalidad vial en Barranquilla. La primera fuente corresponde al dataset principal de accidentalidad y la segunda es una API externa de información meteorológica.
+Para el desarrollo del proyecto se definieron dos conjuntos de datos principales y una API complementaria. Los dos datasets permiten analizar la relación entre los accidentes de tránsito y las condiciones de precipitación registradas en Barranquilla.
 
 ### Fuente 1. Accidentalidad en Barranquilla
 
@@ -41,21 +41,37 @@ Para el desarrollo del proyecto se definieron dos fuentes de datos relacionadas 
 * **Variables principales:** `FECHA_ACCIDENTE`, `HORA_ACCIDENTE`, `GRAVEDAD_ACCIDENTE`, `CLASE_ACCIDENTE`, `SITIO_EXACTO_ACCIDENTE`, `CANT_HERIDOS_EN_SITIO_ACCIDENTE`, `CANT_MUERTOS_EN_SITIO_ACCIDENTE`, `CANTIDAD_ACCIDENTES`, `AÑO_ACCIDENTE`, `MES_ACCIDENTE` y `DIA_ACCIDENTE`.
 * **Posible variable objetivo:** `GRAVEDAD_ACCIDENTE`.
 
-Este conjunto de datos contiene registros de accidentes de tránsito ocurridos en Barranquilla, incluyendo información temporal, ubicación del accidente, gravedad y cantidad de heridos y muertos.
+Este conjunto contiene registros de accidentes de tránsito ocurridos en Barranquilla, incluyendo información temporal, ubicación, gravedad y cantidad de heridos y muertos.
 
-### Fuente 2. Open-Meteo
+### Fuente 2. Precipitación en Barranquilla
+
+* **Nombre:** Precipitación
+* **Fuente:** IDEAM - Datos Abiertos Colombia
+* **Formato:** CSV
+* **Municipio:** Barranquilla
+* **Variables principales:** `codigoestacion`, `codigosensor`, `fechaobservacion`, `valorobservado`, `nombreestacion`, `departamento`, `municipio`, `latitud`, `longitud`, `descripcionsensor` y `unidadmedida`.
+* **Variable principal:** `valorobservado`, que representa la precipitación registrada en milímetros (mm).
+
+Este conjunto contiene mediciones reales realizadas por estaciones meteorológicas ubicadas en Barranquilla. Los registros incluyen la fecha y hora de observación, la cantidad de precipitación y la ubicación de la estación.
+
+### Fuente 3. API complementaria: Open-Meteo
 
 * **Nombre:** Open-Meteo
 * **Tipo:** API REST
 * **Formato de respuesta:** JSON
 * **Categoría:** Weather
-* **Variables disponibles:** temperatura, humedad relativa, precipitación y velocidad del viento.
-* **Uso en el proyecto:** complementar la información de accidentalidad con variables meteorológicas para analizar una posible relación entre las condiciones climáticas y los accidentes de tránsito.
+* **Uso en el proyecto:** complementar la información meteorológica obtenida de los datasets y realizar consultas de variables como temperatura, humedad, precipitación y velocidad del viento.
 
-## Relación entre las fuentes
+## Relación entre los datasets
 
-Las dos fuentes se pueden relacionar principalmente mediante las variables de **fecha y hora**.
+Los dos datasets principales pueden relacionarse principalmente mediante la **fecha y hora**.
 
-El dataset de accidentalidad contiene la fecha y hora en que ocurrió cada accidente, mientras que Open-Meteo permite obtener información meteorológica para una fecha, hora y ubicación determinadas.
+El dataset de accidentalidad registra la fecha y hora en que ocurrió cada accidente, mientras que el dataset de precipitación registra la fecha y hora en que una estación meteorológica realizó una medición de lluvia.
 
-El objetivo es utilizar la información climática como fuente complementaria para estudiar si las condiciones meteorológicas pueden estar relacionadas con la gravedad o comportamiento de los accidentes registrados en Barranquilla.
+Esta relación permitirá analizar si existe una asociación entre la **precipitación y la ocurrencia de accidentes de tránsito en Barranquilla**.
+
+Una posible pregunta de análisis es:
+
+**¿Cuando llueve, ocurren más accidentes de tránsito en Barranquilla?**
+
+La API de Open-Meteo se utilizará como fuente complementaria de información meteorológica y no como uno de los dos datasets principales del análisis.
