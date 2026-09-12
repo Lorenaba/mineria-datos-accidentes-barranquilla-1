@@ -75,3 +75,23 @@ Una posible pregunta de análisis es:
 **¿Cuando llueve, ocurren más accidentes de tránsito en Barranquilla?**
 
 La API de Open-Meteo se utilizará como fuente complementaria de información meteorológica y no como uno de los dos datasets principales del análisis.
+
+**Comparación de tipos de datos**
+
+Al cargar los dos datasets con Pandas, se identificaron los siguientes tipos de datos:
+
+| ACCIDENTES                         | Tipo      | PRECIPITACIÓN       | Tipo      |
+| ---------------------------------- | --------- | ------------------- | --------- |
+| `FECHA_ACCIDENTE`                  | `object`  | `codigoestacion`    | `int64`   |
+| `HORA_ACCIDENTE`                   | `object`  | `codigosensor`      | `int64`   |
+| `GRAVEDAD_ACCIDENTE`               | `object`  | `fechaobservacion`  | `object`  |
+| `CLASE_ACCIDENTE`                  | `object`  | `valorobservado`    | `float64` |
+| `SITIO_EXACTO_ACCIDENTE`           | `object`  | `nombreestacion`    | `object`  |
+| `CANT_HERIDOS_EN _SITIO_ACCIDENTE` | `float64` | `departamento`      | `object`  |
+| `CANT_MUERTOS_EN _SITIO_ACCIDENTE` | `float64` | `municipio`         | `object`  |
+| `CANTIDAD_ACCIDENTES`              | `int64`   | `zonahidrografica`  | `object`  |
+| `AÑO_ACCIDENTE`                    | `int64`   | `latitud`           | `float64` |
+| `MES_ACCIDENTE`                    | `object`  | `longitud`          | `float64` |
+| `DIA_ACCIDENTE`                    | `object`  | `descripcionsensor` | `object`  |
+| —                                  | —         | `unidadmedida`      | `object`  |
+
